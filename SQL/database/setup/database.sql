@@ -9,3 +9,9 @@
 --
 -- Example task for you:
 -- create one database such as `olist_dw` or `sql_medallion`
+
+
+IF OBJECT_ID('olist_dw', 'U') IS NULL
+BEGIN
+    CREATE DATABASE olist_dw;
+END
