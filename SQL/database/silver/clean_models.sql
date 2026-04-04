@@ -1,0 +1,14 @@
+-- Write silver-layer transformation SQL in this file.
+-- Silver means cleaned, standardized, and business-ready tables or views.
+--
+-- Typical work here:
+-- 1. clean nulls
+-- 2. standardize status values
+-- 3. remove bad records
+-- 4. derive helper columns
+--
+-- Recommended first silver objects:
+-- 1. silver.orders_clean
+-- 2. silver.order_items_clean
+-- 3. silver.customers_clean
+-- 4. silver.products_clean

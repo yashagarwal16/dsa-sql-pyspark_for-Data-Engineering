@@ -1,29 +1,55 @@
-# SQL Track
+# SQL Data Engineering Workspace
 
-This folder is the SQL side of the repo.
+This repo is organized as a project workspace for building your own SQL data engineering project with medallion architecture.
+It is not meant to hold finished answers for you.
+Each file is a place where you write your own SQL while building the project.
 
-Use it to keep your SQL learning organized in the same way as your DSA notebooks:
-- day-wise progress
-- notebook or query file per topic
-- best interview questions
-- dataset used for practice
+## Folder Layout
 
-Recommended structure:
-- `sql/notebooks/` for `.ipynb`
-- `sql/queries/` for `.sql`
-- `sql/datasets/` for sample datasets or links
-- `sql/WORK_LOG_SQL.md` for day-wise tracking
-- `sql/BEST_QUESTIONS.md` for high-value SQL questions
+- `data/raw/` for source CSV files
+- `data/external/` for future datasets you download later
+- `database/setup/` for database and schema creation
+- `database/bronze/` for raw landing tables
+- `database/silver/` for cleaned and standardized models
+- `database/gold/` for reporting marts
+- `database/quality/` for data quality checks
+- `database/serving/` for views or serving-layer objects
+- `docs/` for dataset notes and readiness assessment
+- `practice/` for day-wise questions, work log, and interview preparation
+- `notebooks/` for Jupyter notebooks if you want exploratory work
 
-Suggested naming:
-- `Day-01_SQL_Basics.ipynb`
-- `Day-02_SELECT_WHERE_ORDER_BY.sql`
-- `Day-08_JOINS.ipynb`
-- `Day-12_WINDOW_FUNCTIONS.sql`
+## Current Dataset
 
-Keep one rule:
-every SQL file should mention:
-- topic
-- best question solved
-- dataset used
-- output goal
+- Olist e-commerce dataset in `data/raw/olist/`
+
+## Where You Build The Project
+
+- Write your actual project SQL in `database/`
+- Use `practice/sql/` only for interview-style questions and extra practice
+- Use `notebooks/` only if you want exploration or notes
+
+## Project Build Order
+
+1. `database/setup/database.sql`
+2. `database/setup/schemas.sql`
+3. `database/bronze/raw_tables.sql`
+4. `database/silver/clean_models.sql`
+5. `database/gold/marts.sql`
+6. `database/quality/checks.sql`
+
+## Practice Files
+
+- day-wise plan: `practice/DAY_WISE_QUESTIONS.md`
+- work log: `practice/WORK_LOG_SQL.md`
+- interview questions: `practice/BEST_QUESTIONS.md`
+
+## Simple Rule
+
+If the SQL is part of your real project, put it in `database/`.
+If the SQL is only for learning or interview practice, put it in `practice/sql/`.
+
+## Reality Check
+
+Olist is strong for SQL, dimensional modeling, and warehouse practice.
+It is not enough by itself for FAANG-level data engineering preparation.
+See `docs/faang_readiness_assessment.md`.

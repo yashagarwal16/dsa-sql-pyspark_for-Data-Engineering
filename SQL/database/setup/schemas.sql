@@ -1,0 +1,10 @@
+-- Write schema creation statements in this file.
+-- Run this after creating the database.
+--
+-- Purpose:
+-- 1. create `bronze` for raw tables
+-- 2. create `silver` for cleaned tables
+-- 3. create `gold` for marts
+-- 4. optionally create `serving` for views
+--
+-- Keep this file only for schema-level setup.

@@ -1,0 +1,9 @@
+-- Write data quality and reconciliation checks in this file.
+--
+-- Recommended checks:
+-- 1. duplicate order ids
+-- 2. null business keys
+-- 3. negative prices or freight values
+-- 4. orphan foreign keys
+-- 5. delivered orders with missing delivery dates
+-- 6. row-count reconciliation from bronze to silver/gold

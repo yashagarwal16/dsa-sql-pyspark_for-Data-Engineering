@@ -1,0 +1,11 @@
+-- Write the database creation statement in this file.
+-- Use this file first.
+-- Purpose:
+-- 1. create your main database for the project
+-- 2. switch context to that database if needed
+--
+-- Suggested database type:
+-- relational warehouse-style database in SQL Server
+--
+-- Example task for you:
+-- create one database such as `olist_dw` or `sql_medallion`

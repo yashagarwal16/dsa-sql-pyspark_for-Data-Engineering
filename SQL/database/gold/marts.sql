@@ -1,0 +1,13 @@
+-- Write gold-layer marts in this file.
+-- Gold means reporting-ready tables or views used for analytics.
+--
+-- Recommended marts:
+-- 1. gold.mart_monthly_revenue
+-- 2. gold.mart_customer_revenue
+-- 3. gold.mart_seller_performance
+-- 4. gold.mart_category_trends
+--
+-- In this file, focus on:
+-- 1. business metrics
+-- 2. aggregation logic
+-- 3. final reporting grain

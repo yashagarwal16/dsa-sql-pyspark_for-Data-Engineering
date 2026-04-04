@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "ms-mssql.mssql",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-mssql",
+    "ms-toolsai.jupyter"
+  ]
+}

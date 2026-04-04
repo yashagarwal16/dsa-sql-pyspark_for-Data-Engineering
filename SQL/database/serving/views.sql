@@ -1,0 +1,7 @@
+-- Write serving-layer views in this file if you need them.
+-- Serving is optional.
+--
+-- Use this file for:
+-- 1. dashboard-facing views
+-- 2. simplified analyst-facing views
+-- 3. final presentation layer objects
