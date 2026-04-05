@@ -1,130 +1,164 @@
--- Write bronze/raw table DDL in this file.
--- Bronze means source-aligned raw tables with minimal cleanup.
---
--- Create raw tables for the Olist CSV files from `data/raw/olist/`.
---
--- Recommended first tables:
--- 1. bronze.raw_orders
--- 2. bronze.raw_order_items
--- 3. bronze.raw_customers
--- 4. bronze.raw_products
--- 5. bronze.raw_sellers
--- 6. bronze.raw_order_payments
--- 7. bronze.raw_order_reviews
---
--- In this file, decide:
--- 1. column names
--- 2. data types
--- 3. primary keys if you want them on raw tables
 
+/*
+===============================================================================
+Bronze Layer DDL (RAW Tables) - Olist Dataset
+===============================================================================
+Purpose:
+    - Create RAW (bronze) tables for Olist dataset
+    - Designed for BULK INSERT without failures
+    - No constraints, no strict datatypes
+    - All columns stored as VARCHAR
 
+Usage:
+    Run this file before BULK INSERT
+===============================================================================
+*/
+
+USE olist_dw;
+GO
+
+-- Create schema if not exists
+IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = 'bronze')
+    EXEC('CREATE SCHEMA bronze');
+GO
+
+------------------------------------------------
+-- RAW CUSTOMERS
+------------------------------------------------
 DROP TABLE IF EXISTS bronze.customers;
 GO
 
 CREATE TABLE bronze.customers(
-    customer_id VARCHAR(255) PRIMARY KEY,
+    customer_id VARCHAR(255),
     customer_unique_id VARCHAR(255),
-    customer_zip_code_prefix INT,
+    customer_zip_code_prefix VARCHAR(50),
     customer_city VARCHAR(255),
-    customer_state VARCHAR(255)
+    customer_state VARCHAR(50)
 );
-
 GO
 
+------------------------------------------------
+-- RAW ORDERS
+------------------------------------------------
 DROP TABLE IF EXISTS bronze.orders;
 GO
 
 CREATE TABLE bronze.orders(
-    order_id VARCHAR(255) PRIMARY KEY,
+    order_id VARCHAR(255),
     customer_id VARCHAR(255),
-    order_status VARCHAR(255),
-    order_purchase_timestamp DATETIME,
-    order_approved_at DATETIME,
-    order_delivered_carrier_date DATETIME,
-    order_delivered_customer_date DATETIME,
-    order_estimated_delivery_date DATETIME
+    order_status VARCHAR(50),
+    order_purchase_timestamp VARCHAR(50),
+    order_approved_at VARCHAR(50),
+    order_delivered_carrier_date VARCHAR(50),
+    order_delivered_customer_date VARCHAR(50),
+    order_estimated_delivery_date VARCHAR(50)
 );
+GO
 
+------------------------------------------------
+-- RAW ORDER ITEMS
+------------------------------------------------
 DROP TABLE IF EXISTS bronze.order_items;
 GO
 
 CREATE TABLE bronze.order_items(
     order_id VARCHAR(255),
-    order_item_id INT,
+    order_item_id VARCHAR(50),
     product_id VARCHAR(255),
     seller_id VARCHAR(255),
-    shipping_limit_date DATETIME,
-    price FLOAT,
-    freight_value FLOAT,
-    PRIMARY KEY (order_id, order_item_id)
+    shipping_limit_date VARCHAR(50),
+    price VARCHAR(50),
+    freight_value VARCHAR(50)
 );
+GO
 
+------------------------------------------------
+-- RAW PRODUCTS
+------------------------------------------------
 DROP TABLE IF EXISTS bronze.products;
 GO
-CREATE TABLE bronze.products(
-    product_id VARCHAR(255) PRIMARY KEY,
-    product_category_name VARCHAR(255),
-    product_name_length INT,
-    product_description_length INT,
-    product_photos_qty INT,
-    product_weight_g FLOAT,
-    product_length_cm FLOAT,
-    product_height_cm FLOAT,
-    product_width_cm FLOAT
-);
 
+CREATE TABLE bronze.products(
+    product_id VARCHAR(255),
+    product_category_name VARCHAR(255),
+    product_name_length VARCHAR(50),
+    product_description_length VARCHAR(50),
+    product_photos_qty VARCHAR(50),
+    product_weight_g VARCHAR(50),
+    product_length_cm VARCHAR(50),
+    product_height_cm VARCHAR(50),
+    product_width_cm VARCHAR(50)
+);
+GO
+
+------------------------------------------------
+-- RAW SELLERS
+------------------------------------------------
 DROP TABLE IF EXISTS bronze.sellers;
 GO
-CREATE TABLE bronze.sellers(
-    seller_id VARCHAR(255) PRIMARY KEY,
-    seller_zip_code_prefix INT,
-    seller_city VARCHAR(255),
-    seller_state VARCHAR(255)
-);  
 
+CREATE TABLE bronze.sellers(
+    seller_id VARCHAR(255),
+    seller_zip_code_prefix VARCHAR(50),
+    seller_city VARCHAR(255),
+    seller_state VARCHAR(50)
+);
+GO
+
+------------------------------------------------
+-- RAW ORDER PAYMENTS
+------------------------------------------------
 DROP TABLE IF EXISTS bronze.order_payments;
 GO
+
 CREATE TABLE bronze.order_payments(
     order_id VARCHAR(255),
-    payment_sequential INT,
-    payment_type VARCHAR(255),
-    payment_installments INT,
-    payment_value FLOAT,
-    PRIMARY KEY (order_id, payment_sequential)
-);  
+    payment_sequential VARCHAR(50),
+    payment_type VARCHAR(50),
+    payment_installments VARCHAR(50),
+    payment_value VARCHAR(50)
+);
+GO
 
+------------------------------------------------
+-- RAW ORDER REVIEWS
+------------------------------------------------
 DROP TABLE IF EXISTS bronze.order_reviews;
 GO
-CREATE TABLE bronze.order_reviews(
-    review_id VARCHAR(255) PRIMARY KEY,
-    order_id VARCHAR(255),
-    review_score INT,
-    review_comment_title VARCHAR(255),
-    review_comment_message VARCHAR(255),
-    review_creation_date DATETIME,
-    review_answer_timestamp DATETIME
-);      
 
+CREATE TABLE bronze.order_reviews(
+    review_id VARCHAR(255),
+    order_id VARCHAR(255),
+    review_score VARCHAR(50),
+    review_comment_title VARCHAR(MAX),
+    review_comment_message VARCHAR(MAX),
+    review_creation_date VARCHAR(50),
+    review_answer_timestamp VARCHAR(50)
+);
 GO
 
+------------------------------------------------
+-- RAW GEOLOCATION
+------------------------------------------------
 DROP TABLE IF EXISTS bronze.geolocation;
 GO
+
 CREATE TABLE bronze.geolocation(
-    geolocation_zip_code_prefix INT,
-    geolocation_lat FLOAT,
-    geolocation_lng FLOAT,
+    geolocation_zip_code_prefix VARCHAR(50),
+    geolocation_lat VARCHAR(50),
+    geolocation_lng VARCHAR(50),
     geolocation_city VARCHAR(255),
-    geolocation_state VARCHAR(255)
-);  
-
+    geolocation_state VARCHAR(50)
+);
 GO
 
-DROP TABLE IF EXISTS bronze.product_category_name_translation;
+------------------------------------------------
+-- RAW CATEGORY TRANSLATION
+------------------------------------------------
+DROP TABLE IF EXISTS bronze.category_translation;
 GO
-CREATE TABLE bronze.product_category_name_translation(
-    product_category_name VARCHAR(255) PRIMARY KEY,
+
+CREATE TABLE bronze.category_translation(
+    product_category_name VARCHAR(255),
     product_category_name_english VARCHAR(255)
-);      
-
-
-
+);
