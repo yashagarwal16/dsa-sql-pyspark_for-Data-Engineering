@@ -1,18 +1,5 @@
 
-/*
-===============================================================================
-Bronze Layer DDL (RAW Tables) - Olist Dataset
-===============================================================================
-Purpose:
-    - Create RAW (bronze) tables for Olist dataset
-    - Designed for BULK INSERT without failures
-    - No constraints, no strict datatypes
-    - All columns stored as VARCHAR
 
-Usage:
-    Run this file before BULK INSERT
-===============================================================================
-*/
 
 USE olist_dw;
 GO
