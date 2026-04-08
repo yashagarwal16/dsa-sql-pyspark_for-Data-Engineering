@@ -22,9 +22,9 @@ BEGIN
     BEGIN TRY
         SET @batch_start_time = GETDATE();
 
-        PRINT '================================================';
+        PRINT '=================================================';
         PRINT 'Loading Bronze RAW Layer - Olist Dataset';
-        PRINT '================================================';
+        PRINT '=================================================';
 
         ------------------------------------------------
         -- RAW CUSTOMERS
@@ -51,7 +51,7 @@ BEGIN
         ------------------------------------------------
         SET @start_time = GETDATE();
         TRUNCATE TABLE bronze.orders;
-
+        print'-----Truncatinfg the table'
         BULK INSERT bronze.orders
         FROM 'D:\sql\SQL\data\raw\olist\olist_orders_dataset.csv'
         WITH (
