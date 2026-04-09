@@ -57,7 +57,7 @@ CASE UPPER(LTRIM(RTRIM(customer_state)))
 from bronze.customers
 
 -------------------------------------------------
--- Customers Clean Table in progress
+-- Orders Clean Table in progress
 
 -------------------------------------------------
 
