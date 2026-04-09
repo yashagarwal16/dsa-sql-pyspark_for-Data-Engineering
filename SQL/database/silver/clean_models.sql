@@ -57,6 +57,22 @@ CASE UPPER(LTRIM(RTRIM(customer_state)))
 from bronze.customers
 
 -------------------------------------------------
-
+-- Customers Clean Table in progress
 
 -------------------------------------------------
+
+select
+    trim(replace(order_id,'"','')) as order_id,
+    trim(replace(customer_id,'"','')) as customer_id,
+
+    lower(trim(order_status)) as order_status,
+
+    case 
+        when lower(trim(order_status)) in ('created','approved','processing') then 'in_progress'
+        when lower(trim(order_status)) = 'shipped' then 'in_transit'
+        when lower(trim(order_status)) = 'delivered' then 'completed'
+        when lower(trim(order_status)) in ('canceled','unavailable') then 'failed'
+        else 'unknown'
+    end as order_stage
+
+from bronze.orders
