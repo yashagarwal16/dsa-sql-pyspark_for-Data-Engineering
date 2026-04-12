@@ -57,9 +57,9 @@ CASE UPPER(LTRIM(RTRIM(customer_state)))
 from bronze.customers
 
 -------------------------------------------------
--- Orders Clean Table in progress
-
+-- Orders Clean Table 
 ------------------------------------------------- 
+
 TRUNCATE TABLE silver.orders;
 
 INSERT INTO silver.orders (
