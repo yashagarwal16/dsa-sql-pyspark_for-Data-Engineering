@@ -59,20 +59,58 @@ from bronze.customers
 -------------------------------------------------
 -- Orders Clean Table in progress
 
--------------------------------------------------
+------------------------------------------------- 
+TRUNCATE TABLE silver.orders;
 
-select
-    trim(replace(order_id,'"','')) as order_id,
-    trim(replace(customer_id,'"','')) as customer_id,
-
-    lower(trim(order_status)) as order_status,
+INSERT INTO silver.orders (
+    order_id,
+    customer_id,
+    order_status,
+    order_status_fixed,
+    order_purchase_timestamp,
+    order_approved_at,
+    order_delivered_carrier_date,
+    order_delivered_customer_date,
+    order_estimated_delivery_date,
+    is_invalid_delivery,
+    is_conflict,
+    is_not_delivered
+)
+SELECT
+    trim(replace(order_id,'"','')),
+    trim(replace(customer_id,'"','')),
+    lower(trim(order_status)),
 
     case 
-        when lower(trim(order_status)) in ('created','approved','processing') then 'in_progress'
-        when lower(trim(order_status)) = 'shipped' then 'in_transit'
-        when lower(trim(order_status)) = 'delivered' then 'completed'
-        when lower(trim(order_status)) in ('canceled','unavailable') then 'failed'
-        else 'unknown'
-    end as order_stage
+        when lower(trim(order_status)) = 'delivered' 
+             and order_delivered_customer_date is null 
+        then 'shipped'
+        when lower(trim(order_status)) = 'canceled' 
+             and order_delivered_customer_date is not null 
+        then 'delivered'
+        else lower(trim(order_status))
+    end,
 
-from bronze.orders
+    CAST(order_purchase_timestamp AS DATETIME),
+    CAST(order_approved_at AS DATETIME),
+    CAST(order_delivered_carrier_date AS DATETIME),
+    CAST(order_delivered_customer_date AS DATETIME),
+    CAST(order_estimated_delivery_date AS DATETIME),
+
+    case 
+        when lower(trim(order_status)) = 'delivered' 
+             and order_delivered_customer_date is null 
+        then 1 else 0 
+    end,
+
+    case 
+        when lower(trim(order_status)) = 'canceled' 
+             and order_delivered_customer_date is not null 
+        then 1 else 0 
+    end,
+
+    case 
+        when order_delivered_customer_date is null then 1 else 0
+    end
+
+FROM bronze.orders;
