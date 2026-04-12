@@ -1,55 +1,160 @@
-# SQL Data Engineering Workspace
+# 🛒 Olist E-Commerce Data Engineering Project
 
-This repo is organized as a project workspace for building your own SQL data engineering project with medallion architecture.
-It is not meant to hold finished answers for you.
-Each file is a place where you write your own SQL while building the project.
+## 🚀 Overview
 
-## Folder Layout
+This project builds a **SQL-based data pipeline** using the **Olist E-commerce dataset (Kaggle)** and follows the **Medallion Architecture (Bronze, Silver, Gold)**.
 
-- `data/raw/` for source CSV files
-- `data/external/` for future datasets you download later
-- `database/setup/` for database and schema creation
-- `database/bronze/` for raw landing tables
-- `database/silver/` for cleaned and standardized models
-- `database/gold/` for reporting marts
-- `database/quality/` for data quality checks
-- `database/serving/` for views or serving-layer objects
-- `docs/` for dataset notes and readiness assessment
-- `practice/` for day-wise questions, work log, and interview preparation
-- `notebooks/` for Jupyter notebooks if you want exploratory work
+The objective is to transform raw data into **clean, structured, and analytics-ready datasets**, simulating a real-world data engineering workflow.
 
-## Current Dataset
+---
 
-- Olist e-commerce dataset in `data/raw/olist/`
+## 🏗️ Architecture (ER Model)
 
-## Where You Build The Project
+![ER Diagram](ER diagram for Olist e-commerce system.png)
 
-- Write your actual project SQL in `database/`
-- Use `practice/sql/` only for interview-style questions and extra practice
-- Use `notebooks/` only if you want exploration or notes
+### 🥉 Bronze Layer (Raw Data)
 
-## Project Build Order
+* Raw dataset ingested from source
+* No transformations applied
+* Serves as the **single source of truth**
 
-1. `database/setup/database.sql`
-2. `database/setup/schemas.sql`
-3. `database/bronze/raw_tables.sql`
-4. `database/silver/clean_models.sql`
-5. `database/gold/marts.sql`
-6. `database/quality/checks.sql`
+### 🥈 Silver Layer (Data Cleaning & Transformation)
 
-## Practice Files
+* Handling null values and duplicates
+* Standardizing schema and formats
+* Creating structured tables for analysis
 
-- day-wise plan: `practice/DAY_WISE_QUESTIONS.md`
-- work log: `practice/WORK_LOG_SQL.md`
-- interview questions: `practice/BEST_QUESTIONS.md`
+### 🥇 Gold Layer (Analytics - Upcoming)
 
-## Simple Rule
+* Business-level aggregations
+* KPI generation
+* Optimized for dashboards and reporting
 
-If the SQL is part of your real project, put it in `database/`.
-If the SQL is only for learning or interview practice, put it in `practice/sql/`.
+---
 
-## Reality Check
+## 📊 Dataset Tables
 
-Olist is strong for SQL, dimensional modeling, and warehouse practice.
-It is not enough by itself for FAANG-level data engineering preparation.
-See `docs/faang_readiness_assessment.md`.
+* Customers
+* Orders
+* Order Items
+* Products
+* Sellers
+* Payments
+* Reviews
+* Geolocation
+* Category Translation
+
+---
+
+## ⚙️ Tech Stack
+
+* **SQL** → Data transformation & cleaning
+* **Git & GitHub** → Version control
+* **Kaggle** → Dataset source
+
+---
+
+## 📈 Current Progress
+
+### 🥉 Bronze Layer
+
+* [x] All raw tables ingested
+
+### 🥈 Silver Layer (In Progress)
+
+* [x] Customers table cleaned & transformed
+* [x] Orders table cleaned & transformed
+* [ ] Order Items
+* [ ] Products
+* [ ] Sellers
+* [ ] Payments
+* [ ] Reviews
+* [ ] Geolocation
+* [ ] Category Translation
+
+### 🥇 Gold Layer
+
+* [ ] Not started
+
+---
+
+## 🆕 Recent Updates
+
+### 📅 April 14, 2026
+
+* Updated README with architecture diagram and project details
+
+### 📅 April 13, 2026
+
+* Cleaned and loaded `orders` table into Silver layer
+
+### 📅 Previous Work
+
+* Completed Bronze layer
+* Cleaned `customers` table
+
+---
+
+## 📁 Project Structure
+
+```
+sql/
+│
+├── data/
+    └── external
+    └── raw
+        └── olist datasets * 8 in csv's
+├── database/
+    └── bronze /
+        └── DDL.sql
+        └── Store-prodecure.sql
+    └──silver/
+        └── clean_models.sql
+        └── DDL.sql
+        └── prdecural.sql
+    └──gold/
+        └──
+    └── quality /
+        └── checks.sql
+    └── serving /
+        └── views.sql
+├── docs/
+    └── dataset.links.md
+    └── olist_data_dictionary.md
+├── notebooks/
+    └── Readme.md
+├── prctice /
+    └── sql
+├── ER diagram for Olist e-commerce system.png
+└── README.md
+```
+
+---
+
+## 🎯 Key Learnings
+
+* Implemented Medallion Architecture in SQL
+* Built layered data pipeline (Bronze → Silver → Gold)
+* Performed real-world data cleaning & transformation
+* Managed project using Git & GitHub
+
+---
+
+## 🚀 Next Steps
+
+* Complete remaining Silver tables
+* Build Gold layer (KPIs & aggregations)
+* Add analytical queries
+* Create dashboards (Power BI / Tableau)
+
+---
+
+## 🙌 Acknowledgment
+
+Dataset: Olist E-commerce Public Dataset (Kaggle)
+
+---
+
+## ⭐ Support
+
+If you found this project helpful, consider giving it a ⭐
