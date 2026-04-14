@@ -118,3 +118,17 @@ FROM bronze.orders;
 -------------------------------------------------
 -- Order Items Clean Table
 -------------------------------------------------
+CREATE TABLE silver.order_items AS
+SELECT DISTINCT
+    order_id,
+    order_item_id,
+    product_id,
+    seller_id,
+
+    CAST(shipping_limit_date AS TIMESTAMP) AS shipping_limit_date,
+
+    CAST(price AS DECIMAL(10,2)) AS price,
+    CAST(freight_value AS DECIMAL(10,2)) AS freight_value
+
+FROM bronze.order_items
+WHERE order_id IS NOT NULL;
