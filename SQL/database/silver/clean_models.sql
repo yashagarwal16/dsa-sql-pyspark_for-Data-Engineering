@@ -132,3 +132,11 @@ SELECT DISTINCT
 
 FROM bronze.order_items
 WHERE order_id IS NOT NULL;
+
+----------------------------------------------------------
+select order_id,
+trim(replace(order_id,'"',''))as order_id,
+order_item_id,
+trim(replace(product_id,'"','')) as product_id
+from bronze.order_items
+----------------------------------------------------------
