@@ -1,0 +1,34 @@
+[
+  {
+    "csv_relative_url":"dsa-sql-pyspark_for-Data-Engineering/refs/heads/main/SQL/data/raw/olist/olist_customers_dataset.csv",
+    "filename":"olist_customers_dataset.csv"
+  },
+  {
+    "csv_relative_url":"dsa-sql-pyspark_for-Data-Engineering/refs/heads/main/SQL/data/raw/olist/olist_geolocation_dataset.csv",
+    "filename":"olist_geolocation_dataset.csv"
+  },
+  {
+    "csv_relative_url":"dsa-sql-pyspark_for-Data-Engineering/refs/heads/main/SQL/data/raw/olist/olist_order_items_dataset.csv",
+    "filename":"olist_order_items_dataset.csv"
+  },
+  {
+    "csv_relative_url":"dsa-sql-pyspark_for-Data-Engineering/refs/heads/main/SQL/data/raw/olist/olist_order_reviews_dataset.csv",
+    "filename":"olist_order_reviews_dataset.csv"
+  },
+  {
+    "csv_relative_url":"dsa-sql-pyspark_for-Data-Engineering/refs/heads/main/SQL/data/raw/olist/olist_orders_dataset.csv",
+    "filename":"olist_orders_dataset.csv"
+  },
+  {
+    "csv_relative_url":"dsa-sql-pyspark_for-Data-Engineering/refs/heads/main/SQL/data/raw/olist/olist_products_dataset.csv",
+    "filename":"olist_products_dataset.csv"
+  },
+  {
+    "csv_relative_url":"dsa-sql-pyspark_for-Data-Engineering/refs/heads/main/SQL/data/raw/olist/olist_sellers_dataset.csv",
+    "filename":"olist_sellers_dataset.csv"
+  },
+  {
+    "csv_relative_url":"dsa-sql-pyspark_for-Data-Engineering/refs/heads/main/SQL/data/raw/olist/product_category_name_translation.csv",
+    "filename":"product_category_name_translation.csv"
+  },
+]
