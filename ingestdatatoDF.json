@@ -30,5 +30,5 @@
   {
     "csv_relative_url":"dsa-sql-pyspark_for-Data-Engineering/refs/heads/main/SQL/data/raw/olist/product_category_name_translation.csv",
     "filename":"product_category_name_translation.csv"
-  },
+  }
 ]
