@@ -26,9 +26,5 @@
   {
     "csv_relative_url":"dsa-sql-pyspark_for-Data-Engineering/refs/heads/main/SQL/data/raw/olist/olist_sellers_dataset.csv",
     "filename":"olist_sellers_dataset.csv"
-  },
-  {
-    "csv_relative_url":"dsa-sql-pyspark_for-Data-Engineering/refs/heads/main/SQL/data/raw/olist/product_category_name_translation.csv",
-    "filename":"product_category_name_translation.csv"
   }
 ]
